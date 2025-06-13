@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24歳、学生です。</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem; /* 画像とタイトルの間隔 */
+        }
+        header .header-image {
+            max-width: 600px; /* ヘッダー画像の最大幅 */
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            gap: 1.5rem;
+        }
+        .image-container {
+            flex: 0 0 300px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        .text-container {
+            flex: 1;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin: 0 0 1rem;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            header .header-image {
+                max-width: 100%; /* モバイルでは画像をフル幅に */
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .image-container {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/asset/unnko.png" alt="田所浩二のヘッダー画像" class="header-image">
+        <h1>田所浩二 24歳、学生です。</h1>
+    </header>
+    <main>
+        <section>
+            <div class="image-container">
+                <img src="/asset/咆哮.webp" alt="野獣の咆哮">
+            </div>
+            <div class="text-container">
+                <h1>田所浩二について</h1>
+                <p>田所浩二（通称：野獣先輩・うんこ等）は、2001年のコートコーポレーションのホモビデオ「BABYLON STAGE34 真夏の夜の淫夢」に出演した人物。役名は「田所」。<br>彼女の独特な演技とセリフがネットで広まり、ニコニコや2chでミーム化。パロディや二次創作が多数生まれ、海外（特に中華圏）でも人気で、bilibiliで100万回以上再生される動画もある。</p>
+            </div>
+        </section>
+        <section>
+            <div class="image-container">
+                <img src="https://via.placeholder.com/300x200" alt="Tadokoro Kojiの名前の由来">
+            </div>
+            <div class="text-container">
+                <h1>Why is she called "Tadokoro Koji"?</h1>
+                <p>2011年に逮捕された「田所浩治」という人物が、名前が似ているという理由でネット上でネタにされ、広まりました。<br>なお、変換のしやすさから「浩治」ではなく「浩二」と呼ばれるようになりました。</p>
+            </div>
+        </section>
+        <section>
+            <div class="image-container">
+                <img src="https://via.placeholder.com/300x200" alt="田所の正体に関する画像">
+            </div>
+            <div class="text-container">
+                <h1>田所の正体</h1>
+                <p>ネット上で魅力的なキャラクターとして話題にされている彼女だが、正体は未だに判明していません。<br>しかし、たくさんの淫夢ファンによって仮説が提唱されており、「女の子説」「E721系説」「死亡説」などがあります。</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
