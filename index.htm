@@ -1,14 +1,14 @@
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const audio = new Audio('/asset/audio.mp3');
-    audio.loop = true;
-    audio.volume = 0.3;
+    document.addEventListener('DOMContentLoaded', function () {
+        const audio = new Audio('/asset/audio.mp3');
+        audio.loop = true;
+        audio.volume = 0.3;
 
-    // 再生／一時停止ボタンを作成
-    const btn = document.createElement('button');
-    let isPlaying = false;
-    btn.textContent = '🔇';
-    btn.style.cssText = `
+        // 再生／一時停止ボタンを作成
+        const btn = document.createElement('button');
+        let isPlaying = false;
+        btn.textContent = '🔇';
+        btn.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
@@ -25,21 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
         transition: all 0.3s ease;
     `;
 
-    btn.addEventListener('click', function() {
-        if (!isPlaying) {
-            audio.play().catch(e => console.log('Audio play failed:', e));
-            btn.textContent = '🔊';
-        } else {
-            audio.pause();
-            btn.textContent = '🔇';
-        }
-        isPlaying = !isPlaying;
-    });
+        btn.addEventListener('click', function () {
+            if (!isPlaying) {
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                btn.textContent = '🔊';
+            } else {
+                audio.pause();
+                btn.textContent = '🔇';
+            }
+            isPlaying = !isPlaying;
+        });
 
-    document.body.appendChild(btn);
-});
+        document.body.appendChild(btn);
+    });
 </script>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,14 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #3e343f;
             color: #333;
         }
+
         header {
-            background-image: url('/asset/unnko.jpg'); /* ヘッダー画像 */
+            background-image: url('/asset/unnko.jpg');
+            /* ヘッダー画像 */
             background-size: cover;
             background-position: center;
-            min-height: 300px; /* ヘッダーの高さ */
+            min-height: 300px;
+            /* ヘッダーの高さ */
             color: white;
             text-align: center;
             display: flex;
@@ -66,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             position: relative;
             padding: 2rem;
         }
+
         header::before {
             content: '';
             position: absolute;
@@ -73,124 +78,172 @@ document.addEventListener('DOMContentLoaded', function() {
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(1, 0, 0, 0.391); /* テキストの視認性を高める半透明オーバーレイ */
+            background: rgba(1, 0, 0, 0.391);
+            /* テキストの視認性を高める半透明オーバーレイ */
             z-index: 1;
         }
+
         header h1 {
             position: relative;
-            z-index: 2; /* テキストをオーバーレイの上に */
+            z-index: 2;
+            /* テキストをオーバーレイの上に */
             margin: 0;
             font-size: 2.5rem;
-            text-shadow: 2px 2px 4px #6c4d47d4; /* テキストに影を追加 */
+            text-shadow: 2px 2px 4px #6c4d47d4;
+            /* テキストに影を追加 */
         }
+
         main {
             max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
+
         section {
             display: flex;
             align-items: center;
             margin-bottom: 2rem;
-            background-color: white;
+            background-color: #eee2d7;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px #656c68;
             gap: 1.5rem;
         }
+
         .image-container {
             flex: 0 0 300px;
         }
+
         .image-container img {
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px #656c68;
             object-fit: cover;
         }
+
         .text-container {
             flex: 1;
         }
+
         h1 {
             color: #a1726a;
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
+
         p {
             margin: 0 0 1rem;
             font-size: 1rem;
         }
+
         a {
-            color: #a1726a; /* 既存のデザインに合わせたカラー */
-            text-decoration: none; /* デフォルトのアンダーラインを削除 */
+            color: #a1726a;
+            /* 既存のデザインに合わせたカラー */
+            text-decoration: none;
+            /* デフォルトのアンダーラインを削除 */
             transition: color 0.3s ease, border-bottom 0.3s ease;
-            border-bottom: 1px solid transparent; /* ホバー時にアンダーラインを表示 */
+            border-bottom: 1px solid transparent;
+            /* ホバー時にアンダーラインを表示 */
         }
+
         a:hover {
-            color: #7a4f47; /* ホバー時の濃いカラー */
+            color: #7a4f47;
+            /* ホバー時の濃いカラー */
             border-bottom: 1px solid #7a4f47;
         }
+
         a:focus {
-            outline: 2px solid #a1726a; /* フォーカス時のアクセシビリティ */
+            outline: 2px solid #a1726a;
+            /* フォーカス時のアクセシビリティ */
             outline-offset: 2px;
         }
+
         footer {
-            background-color: #2c3e50; /* ヘッダーと同じダークカラー */
+            background-color: #2c3e50;
+            /* ヘッダーと同じダークカラー */
             color: white;
             text-align: center;
             padding: 1.5rem;
             margin-top: 2rem;
         }
+
         footer h2 {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: #f4f4f9;
         }
+
         footer ul {
             list-style: none;
             padding: 0;
             display: flex;
             justify-content: center;
-            gap: 2rem; /* リンク間の間隔 */
+            gap: 2rem;
+            /* リンク間の間隔 */
         }
+
         footer li {
             font-size: 1rem;
         }
+
         footer a {
-            color: #a1726a; /* メインコンテンツのリンクカラーに統一 */
+            color: #a1726a;
+            /* メインコンテンツのリンクカラーに統一 */
         }
+
         footer a:hover {
-            color: #f4f4f9; /* ホバー時に明るい色 */
+            color: #f4f4f9;
+            /* ホバー時に明るい色 */
             border-bottom: 1px solid #f4f4f9;
         }
+
         @media (max-width: 768px) {
             header {
-                min-height: 200px; /* モバイルではヘッダー高さを縮小 */
+                min-height: 200px;
+                /* モバイルではヘッダー高さを縮小 */
             }
+
             header h1 {
                 font-size: 1.8rem;
             }
+
             section {
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .image-container {
                 flex: 0 0 auto;
                 width: 100%;
             }
+
             h1 {
                 font-size: 1.5rem;
             }
+
             p {
                 font-size: 0.9rem;
             }
+
             footer ul {
-                flex-direction: column; /* モバイルではリンクを縦に */
+                flex-direction: column;
+                /* モバイルではリンクを縦に */
                 gap: 1rem;
             }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4EFCDL7QZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B4EFCDL7QZ');
+    </script>
 </head>
+
 <body>
     <header>
         <h1>田所浩二 24歳、学生です。</h1>
@@ -202,7 +255,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="text-container">
                 <h1>田所浩二について</h1>
-                <p>田所浩二（通称：野獣先輩・うんこ等）は、2001年のコートコーポレーションのホモビデオ「BABYLON STAGE34 真夏の夜の淫夢」に出演した人物。役名は「田所」。<br>彼女の独特な演技とセリフがネットで広まり、<a href="https://www.nicovideo.jp/" target="_blank" rel="noopener noreferrer">ニコニコ</a>や<a href="https://5ch.net/" target="_blank" rel="noopener noreferrer">2ch</a>でミーム化。パロディや二次創作が多数生まれ、海外（特に中華圏）でも人気で、<a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">bilibili</a>で100万回以上再生される動画もある。</p>
+                <p>田所浩二（通称：野獣先輩・うんこ等）は、2001年のコートコーポレーションのホモビデオ「BABYLON STAGE34
+                    真夏の夜の淫夢」に出演した人物。役名は「田所」。<br>彼女の独特な演技とセリフがネットで広まり、<a href="https://www.nicovideo.jp/" target="_blank"
+                        rel="noopener noreferrer">ニコニコ</a>や<a href="https://5ch.net/" target="_blank"
+                        rel="noopener noreferrer">2ch</a>でミーム化。パロディや二次創作が多数生まれ、海外（特に中華圏）でも人気で、<a
+                        href="https://www.bilibili.com/" target="_blank"
+                        rel="noopener noreferrer">bilibili</a>で100万回以上再生される動画もある。</p>
             </div>
         </section>
         <section>
@@ -220,11 +278,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="text-container">
                 <h1>田所の正体</h1>
-                <p>ネット上で魅力的なキャラクターとして話題にされている彼女だが、正体は未だに判明していません。<br>しかし、たくさんの淫夢ファンによって仮説が提唱されており、「女の子説」「E721系説」「死亡説」などがあります。</p>
+                <p>ネット上で魅力的なキャラクターとして話題にされている彼女だが、正体は未だに判明していません。<br>しかし、たくさんの淫夢ファンによって仮説が提唱されており、「女の子説」「E721系説」「死亡説」などがあります。
+                </p>
             </div>
         </section>
     </main>
     <footer>
+        <h2>お知らせ</h2>
+        <p>このサイトでは分析のため、Google Analyticsを使ってます。分析させてください! 許してください! <s>何でもしますから!!</s></p>
         <h2>関連リンク</h2>
         <ul>
             <li><a href="https://netminn012.com" target="_blank" rel="noopener noreferrer">作者ホームページ</a></li>
@@ -233,7 +294,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
     </footer>
 </body>
+
 </html>
-    </style>
+</style>
 </head>
+
 <body>
