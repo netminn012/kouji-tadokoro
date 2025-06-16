@@ -1,67 +1,154 @@
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const audio = new Audio('/asset/audio.mp3');
-        audio.loop = true;
-        audio.volume = 0.3;
-
-        // 再生／一時停止ボタンを作成
-        const btn = document.createElement('button');
-        let isPlaying = false;
-        btn.textContent = '🔇';
-        btn.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-        background: rgba(161, 114, 106, 0.9);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-    `;
-
-        btn.addEventListener('click', function () {
-            if (!isPlaying) {
-                audio.play().catch(e => console.log('Audio play failed:', e));
-                btn.textContent = '🔊';
-            } else {
-                audio.pause();
-                btn.textContent = '🔇';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        document.body.appendChild(btn);
-    });
-</script>
+<!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>田所浩二 王道を行くソープ系。</title>
+    
+    <!-- SEO対策 メタタグ -->
+    <title>田所浩二 王道を行くソープ系 | 24歳、学生です</title>
+    <meta name="description" content="田所浩二（野獣先輩）について詳しく解説。真夏の夜の淫夢で話題になったキャラクターの正体や名前の由来、ネットミーム文化について紹介します。">
+    <meta name="keywords" content="田所浩二,野獣先輩,淫夢,ニコニコ動画,ミーム,ホモビデオ,真夏の夜の淫夢">
+    <meta name="author" content="netminn012">
+    
+    <!-- Open Graph / Twitter Card -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="田所浩二 王道を行くソープ系 | 24歳、学生です">
+    <meta property="og:description" content="田所浩二（野獣先輩）について詳しく解説。真夏の夜の淫夢で話題になったキャラクターの正体や名前の由来について紹介します。">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:image" content="/asset/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- 構造化データ（JSON-LD） -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "田所浩二 王道を行くソープ系",
+        "description": "田所浩二（野獣先輩）について詳しく解説するウェブサイト",
+        "author": {
+            "@type": "Person",
+            "name": "netminn012",
+            "url": "https://netminn012.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "netminn012"
+        },
+        "mainEntity": {
+            "@type": "Person",
+            "name": "田所浩二",
+            "alternateName": ["野獣先輩", "うんこ"],
+            "description": "2001年のホモビデオ「真夏の夜の淫夢」に出演した人物"
+        }
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/asset/unnko.jpg" as="image">
+    <link rel="preload" href="/asset/audio.mp3" as="audio">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4EFCDL7QZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-B4EFCDL7QZ');
+    </script>
+    
     <style>
+        /* リセットとベーススタイル */
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Sans', Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #3e343f;
             color: #333;
+            scroll-behavior: smooth;
         }
-
+        
+        /* アニメーション定義 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* ヘッダー */
         header {
             background-image: url('/asset/unnko.jpg');
-            /* ヘッダー画像 */
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             min-height: 300px;
-            /* ヘッダーの高さ */
             color: white;
             text-align: center;
             display: flex;
@@ -69,8 +156,9 @@
             justify-content: center;
             position: relative;
             padding: 2rem;
+            animation: fadeInUp 1s ease-out;
         }
-
+        
         header::before {
             content: '';
             position: absolute;
@@ -79,26 +167,25 @@
             width: 100%;
             height: 100%;
             background: rgba(1, 0, 0, 0.391);
-            /* テキストの視認性を高める半透明オーバーレイ */
             z-index: 1;
         }
-
+        
         header h1 {
             position: relative;
             z-index: 2;
-            /* テキストをオーバーレイの上に */
             margin: 0;
             font-size: 2.5rem;
             text-shadow: 2px 2px 4px #6c4d47d4;
-            /* テキストに影を追加 */
+            animation: bounceIn 1.2s ease-out 0.5s both;
         }
-
+        
+        /* メインコンテンツ */
         main {
             max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-
+        
         section {
             display: flex;
             align-items: center;
@@ -108,196 +195,486 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px #656c68;
             gap: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(101, 108, 104, 0.3);
+        }
+        
+        section:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        section:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        section:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
         .image-container {
             flex: 0 0 300px;
+            overflow: hidden;
+            border-radius: 8px;
         }
-
+        
         .image-container img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 2px 4px #656c68;
             object-fit: cover;
+            transition: transform 0.3s ease;
+            animation: slideInLeft 0.8s ease-out;
         }
-
+        
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+        
         .text-container {
             flex: 1;
+            animation: slideInRight 0.8s ease-out;
         }
-
+        
         h1 {
             color: #a1726a;
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
-
+        
         p {
             margin: 0 0 1rem;
             font-size: 1rem;
         }
-
+        
         a {
             color: #a1726a;
-            /* 既存のデザインに合わせたカラー */
             text-decoration: none;
-            /* デフォルトのアンダーラインを削除 */
             transition: color 0.3s ease, border-bottom 0.3s ease;
             border-bottom: 1px solid transparent;
-            /* ホバー時にアンダーラインを表示 */
+            position: relative;
         }
-
+        
         a:hover {
             color: #7a4f47;
-            /* ホバー時の濃いカラー */
             border-bottom: 1px solid #7a4f47;
+            animation: pulse 0.6s ease-in-out;
         }
-
+        
         a:focus {
             outline: 2px solid #a1726a;
-            /* フォーカス時のアクセシビリティ */
             outline-offset: 2px;
         }
-
+        
+        /* フッター */
         footer {
             background-color: #2c3e50;
-            /* ヘッダーと同じダークカラー */
             color: white;
             text-align: center;
             padding: 1.5rem;
             margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
-
+        
         footer h2 {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: #f4f4f9;
         }
-
+        
         footer ul {
             list-style: none;
             padding: 0;
             display: flex;
             justify-content: center;
             gap: 2rem;
-            /* リンク間の間隔 */
         }
-
+        
         footer li {
             font-size: 1rem;
+            animation: slideInUp 0.6s ease-out forwards;
         }
-
+        
+        footer li:nth-child(1) { animation-delay: 0.1s; }
+        footer li:nth-child(2) { animation-delay: 0.2s; }
+        footer li:nth-child(3) { animation-delay: 0.3s; }
+        footer li:nth-child(4) { animation-delay: 0.4s; }
+        footer li:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         footer a {
             color: #a1726a;
-            /* メインコンテンツのリンクカラーに統一 */
         }
-
+        
         footer a:hover {
             color: #f4f4f9;
-            /* ホバー時に明るい色 */
             border-bottom: 1px solid #f4f4f9;
         }
-
+        
+        /* 音楽コントロールボタン */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(161, 114, 106, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            animation: bounceIn 1s ease-out 1.5s both;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            background: rgba(161, 114, 106, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        
+        .music-control:active {
+            transform: scale(0.95);
+        }
+        
+        .music-control.playing {
+            animation: pulse 2s infinite;
+        }
+        
+        /* スクロール指示アニメーション */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        /* ローディングアニメーション */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #3e343f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #a1726a;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* レスポンシブデザイン */
         @media (max-width: 768px) {
             header {
                 min-height: 200px;
-                /* モバイルではヘッダー高さを縮小 */
+                background-attachment: scroll;
             }
-
+            
             header h1 {
                 font-size: 1.8rem;
             }
-
+            
             section {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
+            
             .image-container {
                 flex: 0 0 auto;
                 width: 100%;
             }
-
+            
             h1 {
                 font-size: 1.5rem;
             }
-
+            
             p {
                 font-size: 0.9rem;
             }
-
+            
             footer ul {
                 flex-direction: column;
-                /* モバイルではリンクを縦に */
                 gap: 1rem;
+            }
+            
+            .music-control {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+        
+        /* アクセシビリティ：モーション削減 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            header {
+                background-attachment: scroll;
+            }
+        }
+        
+        /* ダークモード対応 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #2a2a2a;
+            }
+            
+            section {
+                background-color: #3a3a3a;
+                color: #e0e0e0;
+            }
+            
+            h1 {
+                color: #d4a69a;
             }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4EFCDL7QZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-B4EFCDL7QZ');
-    </script>
 </head>
-
 <body>
+    <!-- ローディング画面 -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
     <header>
         <h1>24歳、学生です。</h1>
+        <div class="scroll-indicator">↓</div>
     </header>
+
     <main>
-        <section>
+        <section itemscope itemtype="https://schema.org/Person">
             <div class="image-container">
-                <img src="/asset/咆哮.webp" alt="田所浩二についての画像">
+                <img src="/asset/咆哮.webp" alt="田所浩二についての画像" 
+                     itemprop="image" loading="lazy" width="300" height="200">
             </div>
             <div class="text-container">
-                <h1>田所浩二について</h1>
-                <p>田所浩二（通称：野獣先輩・うんこ等）は、2001年のコートコーポレーションのホモビデオ「BABYLON STAGE34
-                    真夏の夜の淫夢」に出演した人物。役名は「田所」。<br>彼女の独特な演技とセリフがネットで広まり、<a href="https://www.nicovideo.jp/" target="_blank"
-                        rel="noopener noreferrer">ニコニコ</a>や<a href="https://5ch.net/" target="_blank"
-                        rel="noopener noreferrer">2ch</a>でミーム化。パロディや二次創作が多数生まれ、海外（特に中華圏）でも人気で、<a
-                        href="https://www.bilibili.com/" target="_blank"
-                        rel="noopener noreferrer">bilibili</a>で100万回以上再生される動画もある。</p>
+                <h1 itemprop="name">田所浩二について</h1>
+                <p itemprop="description">
+                    田所浩二（通称：野獣先輩・うんこ等）は、2001年のコートコーポレーションのホモビデオ「BABYLON STAGE34
+                    真夏の夜の淫夢」に出演した人物。役名は「田所」。<br>
+                    彼女の独特な演技とセリフがネットで広まり、
+                    <a href="https://www.nicovideo.jp/" target="_blank" rel="noopener noreferrer" 
+                       aria-label="ニコニコ動画へのリンク">ニコニコ</a>や
+                    <a href="https://5ch.net/" target="_blank" rel="noopener noreferrer" 
+                       aria-label="5chへのリンク">2ch</a>でミーム化。
+                    パロディや二次創作が多数生まれ、海外（特に中華圏）でも人気で、
+                    <a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer" 
+                       aria-label="bilibiliへのリンク">bilibili</a>で100万回以上再生される動画もある。
+                </p>
             </div>
         </section>
+
         <section>
             <div class="image-container">
-                <img src="/asset/ドリル先輩.jpg" alt="Tadokoro Kojiの名前の由来">
+                <img src="/asset/ドリル先輩.jpg" alt="Tadokoro Kojiの名前の由来" 
+                     loading="lazy" width="300" height="200">
             </div>
             <div class="text-container">
                 <h1>Why is she called "Tadokoro Koji"?</h1>
-                <p>2011年に逮捕された「田所浩治」という人物が、名前が似ているという理由でネット上でネタにされ、広まりました。<br>なお、変換のしやすさから「浩治」ではなく「浩二」と呼ばれるようになりました。</p>
+                <p>2011年に逮捕された「田所浩治」という人物が、名前が似ているという理由でネット上でネタにされ、広まりました。<br>
+                   なお、変換のしやすさから「浩治」ではなく「浩二」と呼ばれるようになりました。</p>
             </div>
         </section>
+
         <section>
             <div class="image-container">
-                <img src="/asset/sousaku.png" alt="田所の正体に関する画像">
+                <img src="/asset/sousaku.png" alt="田所の正体に関する画像" 
+                     loading="lazy" width="300" height="200">
             </div>
             <div class="text-container">
                 <h1>田所の正体</h1>
-                <p>ネット上で魅力的なキャラクターとして話題にされている彼女だが、正体は未だに判明していません。<br>しかし、たくさんの淫夢ファンによって仮説が提唱されており、「女の子説」「<a href="https://www.nicovideo.jp/watch/sm35545315" target="_blank" rel="noopener noreferrer">E721系説</a>」「<a href="https://www.nicovideo.jp/watch/sm21244282" target="_blank">死亡説</a>」など、様々な説が存在します。</p>
+                <p>ネット上で魅力的なキャラクターとして話題にされている彼女だが、正体は未だに判明していません。<br>
+                   しかし、たくさんの淫夢ファンによって仮説が提唱されており、「女の子説」「
+                   <a href="https://www.nicovideo.jp/watch/sm35545315" target="_blank" rel="noopener noreferrer" 
+                      aria-label="E721系説の動画">E721系説</a>」「
+                   <a href="https://www.nicovideo.jp/watch/sm21244282" target="_blank" rel="noopener noreferrer" 
+                      aria-label="死亡説の動画">死亡説</a>」など、様々な説が存在します。</p>
             </div>
         </section>
     </main>
+
     <footer>
         <h2>お知らせ</h2>
         <p>このサイトでは分析のため、Google Analyticsを使ってます。分析させてください! 許してください! <s>何でもしますから!!</s></p>
         <h2>関連リンク</h2>
         <ul>
-            <li><a href="https://netminn012.com" target="_blank" rel="noopener noreferrer">作者ホームページ</a></li>
-            <li><a href="https://twitter.com/netminn012" target="_blank" rel="noopener noreferrer">twitter</a></li>
-            <li><a href="https://野獣先輩.com" target="_blank" rel="noopener noreferrer">先駆者</a></li>
-            <li><a href="https://github.com/netminn012/kouji-tadokoro" target="_blank" rel="noopener noreferrer">ソ↑ース↓コ↑ード↓</a></li>
+            <li><a href="https://netminn012.com" target="_blank" rel="noopener noreferrer" 
+                   aria-label="作者ホームページ">作者ホームページ</a></li>
+            <li><a href="https://twitter.com/netminn012" target="_blank" rel="noopener noreferrer" 
+                   aria-label="Twitterアカウント">twitter</a></li>
+            <li><a href="https://野獣先輩.com" target="_blank" rel="noopener noreferrer" 
+                   aria-label="先駆者サイト">先駆者</a></li>
+            <li><a href="https://github.com/netminn012/kouji-tadokoro" target="_blank" rel="noopener noreferrer" 
+                   aria-label="GitHubリポジトリ">ソ↑ース↓コ↑ード↓</a></li>
             <li>リンク集(工事中)</li>
         </ul>
     </footer>
+
+    <script>
+        // ローディング画面の処理
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // 音楽コントロール
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio = new Audio('/asset/audio.mp3');
+            audio.loop = true;
+            audio.volume = 0.3;
+            audio.preload = 'metadata';
+            
+            const btn = document.createElement('button');
+            btn.className = 'music-control';
+            btn.setAttribute('aria-label', '背景音楽の再生/停止');
+            btn.setAttribute('type', 'button');
+            
+            let isPlaying = false;
+            btn.textContent = '🔇';
+            
+            btn.addEventListener('click', function () {
+                if (!isPlaying) {
+                    audio.play().catch(e => {
+                        console.log('Audio play failed:', e);
+                        btn.textContent = '❌';
+                        btn.setAttribute('aria-label', '音楽の再生に失敗しました');
+                    });
+                    btn.textContent = '🔊';
+                    btn.classList.add('playing');
+                    btn.setAttribute('aria-label', '背景音楽を停止');
+                } else {
+                    audio.pause();
+                    btn.textContent = '🔇';
+                    btn.classList.remove('playing');
+                    btn.setAttribute('aria-label', '背景音楽を再生');
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // 音楽の読み込み完了を監視
+            audio.addEventListener('loadeddata', function() {
+                btn.style.opacity = '1';
+            });
+            
+            // エラーハンドリング
+            audio.addEventListener('error', function() {
+                btn.textContent = '❌';
+                btn.disabled = true;
+                btn.setAttribute('aria-label', '音楽ファイルの読み込みに失敗しました');
+            });
+            
+            document.body.appendChild(btn);
+        });
+
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // セクション要素を監視
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // パフォーマンス向上：画像の遅延読み込み
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.src;
+            });
+        } else {
+            // Intersection Observer fallback for older browsers
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
 </body>
-
 </html>
-</style>
-</head>
-
-<body>
