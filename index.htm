@@ -59,6 +59,9 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet">
     </noscript>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet">
 
     <!-- Preload critical resources -->
     <link rel="preload" href="/asset/unnko.webp" as="image" type="image/webp" fetchpriority="high">
@@ -194,11 +197,13 @@
             background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
         }
 
-        .icon {
+        .material-symbols-outlined {
             width: 24px;
             height: 24px;
             display: block;
-            fill: currentColor;
+            font-size: 24px;
+            line-height: 1;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
         /* Hero Header */
@@ -522,15 +527,11 @@
     <!-- Top App Bar -->
     <nav class="top-app-bar" id="topAppBar">
         <button class="icon-button" id="menuButton" type="button" aria-label="メニュー">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
-            </svg>
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
         </button>
         <h1>田所浩二.jp</h1>
         <button class="icon-button" id="themeButton" type="button" aria-label="テーマを切り替える">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-14V1h-1v3h1Zm0 19v-3h-1v3h1ZM4.93 6.34 2.81 4.22l-.71.71 2.12 2.12.71-.71Zm14.85 13.44-2.12-2.12-.71.71 2.12 2.12.71-.71ZM4 13v-1H1v1h3Zm19 0v-1h-3v1h3ZM4.22 19.78l.71.71 2.12-2.12-.71-.71-2.12 2.12ZM16.95 6.34l.71.71 2.12-2.12-.71-.71-2.12 2.12Z" />
-            </svg>
+            <span class="material-symbols-outlined" aria-hidden="true">light_mode</span>
         </button>
     </nav>
 
@@ -631,8 +632,6 @@
         // Theme follows the device on every visit. A button press overrides it for this page only.
         const themeButton = document.getElementById('themeButton');
         const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        const sunIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-14V1h-1v3h1Zm0 19v-3h-1v3h1ZM4.93 6.34 2.81 4.22l-.71.71 2.12 2.12.71-.71Zm14.85 13.44-2.12-2.12-.71.71 2.12 2.12.71-.71ZM4 13v-1H1v1h3Zm19 0v-1h-3v1h3ZM4.22 19.78l.71.71 2.12-2.12-.71-.71-2.12 2.12ZM16.95 6.34l.71.71 2.12-2.12-.71-.71-2.12 2.12Z" /></svg>';
-        const moonIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 15.1A8.5 8.5 0 0 1 8.9 3.3 9 9 0 1 0 20.7 15.1ZM4 12a7 7 0 0 1 2.12-5.02A10.5 10.5 0 0 0 17.02 17.88 7 7 0 0 1 4 12Z" /></svg>';
 
         function effectiveTheme() {
             return document.documentElement.dataset.theme || (darkModeQuery.matches ? 'dark' : 'light');
@@ -640,7 +639,7 @@
 
         function updateThemeButton() {
             const isDark = effectiveTheme() === 'dark';
-            themeButton.innerHTML = isDark ? sunIcon : moonIcon;
+            themeButton.querySelector('.material-symbols-outlined').textContent = isDark ? 'light_mode' : 'dark_mode';
             themeButton.setAttribute('aria-label', isDark ? 'ライトテーマに切り替える' : 'ダークテーマに切り替える');
             themeButton.title = themeButton.getAttribute('aria-label');
         }
@@ -691,9 +690,7 @@
         const fab = document.createElement('button');
         fab.className = 'fab';
         fab.type = 'button';
-        const musicOffIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m4.27 3 16.73 16.73-1.27 1.27-3.58-3.58A4 4 0 0 1 8 17c0-2.21 1.79-4 4-4 .34 0 .67.04.98.12L11 11.14V5h8v2h-6v6.14l-2-2V3.27L3 4.27 4.27 3ZM12 15a2 2 0 1 0 2 2c0-.1 0-.2-.02-.29l-1.69-1.69A2 2 0 0 0 12 15Z" /></svg>';
-        const musicOnIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h6V3h-8Zm-2 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" /></svg>';
-        fab.innerHTML = musicOffIcon;
+        fab.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">music_off</span>';
         fab.setAttribute('aria-label', '音楽再生');
         document.body.appendChild(fab);
 
@@ -709,7 +706,7 @@
                 }
                 audio.play().then(() => {
                     isPlaying = true;
-                    fab.innerHTML = musicOnIcon;
+                    fab.querySelector('.material-symbols-outlined').textContent = 'music_note';
                     fab.classList.add('playing');
                     fab.setAttribute('aria-label', '音楽停止');
                 }).catch(e => {
@@ -719,7 +716,7 @@
             } else {
                 audio.pause();
                 isPlaying = false;
-                fab.innerHTML = musicOffIcon;
+                fab.querySelector('.material-symbols-outlined').textContent = 'music_off';
                 fab.classList.remove('playing');
                 fab.setAttribute('aria-label', '音楽再生');
             }
